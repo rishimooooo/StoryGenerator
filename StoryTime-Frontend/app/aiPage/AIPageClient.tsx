@@ -7,7 +7,7 @@ import { createAIStory } from "@/api/aiApi";
 import { createStory } from "@/api/storyApi";
 import { useRouter } from "next/navigation";
 
-export default function AIPage() {
+export default function AIPageClient() {
   const searchParams = useSearchParams();
   const initialStory = searchParams.get("story") || "";
   const title = searchParams.get("title") || "No title provided.";
@@ -21,7 +21,6 @@ export default function AIPage() {
   const router = useRouter();
   const typingIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Typing animation effect
   useEffect(() => {
     if (!story || isUserEditing) return;
 
@@ -43,7 +42,7 @@ export default function AIPage() {
 
   const handleRegenerate = async () => {
     setIsTyping(true);
-    setIsUserEditing(false); // Reset user edit flag
+    setIsUserEditing(false);
 
     const response = await createAIStory(title, story);
     if (response) {

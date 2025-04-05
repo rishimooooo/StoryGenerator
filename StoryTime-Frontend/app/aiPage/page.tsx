@@ -1,8 +1,8 @@
-// app/aiPage/page.tsx
+"use client";
 
 import dynamic from "next/dynamic";
 
-// Dynamically import the AIPage component with SSR disabled
+// Dynamically import the AIPageClient component
 const AIPageClient = dynamic(() => import("./AIPageClient"), {
   ssr: false,
 });
